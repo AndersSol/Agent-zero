@@ -1,0 +1,12 @@
+{
+  "name": "claude-office-bridge",
+  "version": "1.0.0",
+  "description": "Bridge between Claude Code output and visualization",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js"
+  },
+  "dependencies": {
+    "ws": "^8.16.0"
+  }
+}
