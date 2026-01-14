@@ -231,4 +231,6 @@ MIT - Bruk det som du vil!
 
 ---
 
-Laget med Claude
+Følg meg for flere skråblikk på AI verden: [LinkedIn](https://www.linkedin.com/in/anders-solstad/)
+
+Laget med ❤️ og Claude
