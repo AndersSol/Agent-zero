@@ -1,8 +1,8 @@
 # Claude Office Visualizer
 
-Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Når du gir den en oppgave, sender den ut en strøm av meldinger - "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode" - men det er bare tekst som flyr forbi.
+Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Når du gir den en oppgave, sender den ut en strøm av meldinger som "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode". Men det er bare tekst som flyr forbi.
 
-Så jeg lagde dette. En app som fanger opp disse meldingene og oversetter dem til noe visuelt. Tenk deg at du ser inn i et glassbygning-kontor hvor du kan se alle som jobber. Hver gang Claude bruker et verktøy, dukker det opp en ny "agent" på skjermen. Det er litt som et reality-show fra et kontor - du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
+Så jeg lagde dette. En app som fanger opp disse meldingene og oversetter dem til noe visuelt. Tenk deg at du ser inn i et glassbygning-kontor hvor du kan se alle som jobber. Hver gang Claude bruker et verktøy, dukker det opp en ny "agent" på skjermen. Det er litt som et reality-show fra et kontor. Du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
 
 **Kort fortalt:**
 1. Du gir Claude en oppgave
@@ -11,13 +11,13 @@ Så jeg lagde dette. En app som fanger opp disse meldingene og oversetter dem ti
 
 ## Agentene
 
-- **Manager** - Sjefen som holder styr på alt
-- **Developers** - Kjører bash-kommandoer og bygger ting
-- **Researchers** - Graver rundt i filer og søker etter info
-- **Writers** - Skriver ny kode fra scratch
-- **Editors** - Fikser og forbedrer eksisterende kode
+- **Manager**: Sjefen som holder styr på alt
+- **Developers**: Kjører bash-kommandoer og bygger ting
+- **Researchers**: Graver rundt i filer og søker etter info
+- **Writers**: Skriver ny kode fra scratch
+- **Editors**: Fikser og forbedrer eksisterende kode
 
-De snakker med hverandre, plukker opp nye skills, og leverer arbeid - alt i sanntid.
+De snakker med hverandre, plukker opp nye skills, og leverer arbeid. Alt i sanntid.
 
 ---
 
@@ -26,8 +26,8 @@ De snakker med hverandre, plukker opp nye skills, og leverer arbeid - alt i sann
 ### Steg 1: Forutsetninger
 
 Sørg for at du har installert:
-- **Node.js** (v18 eller nyere) - [nodejs.org](https://nodejs.org)
-- **Claude Code CLI** - [docs.anthropic.com](https://docs.anthropic.com)
+- **Node.js** (v18 eller nyere): [nodejs.org](https://nodejs.org)
+- **Claude Code CLI**: [docs.anthropic.com](https://docs.anthropic.com)
 
 Sjekk at alt er installert:
 ```bash
@@ -88,7 +88,7 @@ npm run dev
 claude --output-format stream-json | node ~/claude-office-viz/server/bridge.js
 ```
 
-**Alternativt** - bare test med demo-modus:
+**Alternativt**, bare test med demo-modus:
 Hvis du ikke piper Claude Code output, vil bridge.js automatisk starte demo-modus etter 3 sekunder.
 
 ---
@@ -233,7 +233,7 @@ claude-office-viz/
 
 ## Lisens
 
-MIT - Bruk det som du vil!
+MIT. Bruk det som du vil!
 
 ---
 
