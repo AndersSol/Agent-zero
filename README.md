@@ -1,35 +1,23 @@
 # Claude Office Visualizer
 
-Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Så jeg lagde dette - en real-time visualisering hvor du kan se Claude Code som et team av agenter som husjer rundt i et lite virtuelt kontor.
+Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Når du gir den en oppgave, sender den ut en strøm av meldinger - "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode" - men det er bare tekst som flyr forbi.
 
-## Hva er greia?
+Så jeg lagde dette. En app som fanger opp disse meldingene og oversetter dem til noe visuelt. Tenk deg at du ser inn i et glassbygning-kontor hvor du kan se alle som jobber. Hver gang Claude bruker et verktøy, dukker det opp en ny "agent" på skjermen. Det er litt som et reality-show fra et kontor - du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
 
-Når Claude Code kjører, dukker det opp agenter basert på hva den gjør:
+**Kort fortalt:**
+1. Du gir Claude en oppgave
+2. Claude sender ut live-oppdateringer
+3. Appen fanger dem opp og tegner agenter i et virtuelt kontor
+
+## Agentene
+
 - **Manager** - Sjefen som holder styr på alt
 - **Developers** - Kjører bash-kommandoer og bygger ting
 - **Researchers** - Graver rundt i filer og søker etter info
 - **Writers** - Skriver ny kode fra scratch
 - **Editors** - Fikser og forbedrer eksisterende kode
 
-De snakker med hverandre, plukker opp nye skills, og leverer arbeid - og du ser alt live!
-
----
-
-## Hvordan fungerer det egentlig?
-
-Tenk deg at du ser på et glassbygning-kontor utenfra, hvor du kan se alle som jobber inne.
-
-Når du gir Claude en oppgave, sender den ut en strøm av meldinger om hva den gjør akkurat nå - "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode". Normalt er dette bare tekst som flyr forbi.
-
-Denne appen fanger opp disse meldingene og oversetter dem til visuelle figurer. Hver gang Claude bruker et verktøy - som å lese en fil eller kjøre en kommando - dukker det opp en ny "agent" på skjermen som representerer den oppgaven.
-
-**Flyten er:**
-1. Du gir Claude en oppgave
-2. Claude sender ut live-oppdateringer om hva den gjør
-3. En "bro" (bridge.js) fanger opp disse oppdateringene
-4. Broen sender dem videre til en nettside som tegner agentene
-
-Det er litt som å se et reality-show fra et kontor - du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
+De snakker med hverandre, plukker opp nye skills, og leverer arbeid - alt i sanntid.
 
 ---
 
