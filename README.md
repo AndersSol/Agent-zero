@@ -1,21 +1,21 @@
-# 🏢 Claude Office Visualizer
+# Claude Office Visualizer
 
-En real-time visualisering av Claude Code som et team av agenter som jobber sammen i et kontor.
+Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Så jeg lagde dette - en real-time visualisering hvor du kan se Claude Code som et team av agenter som husjer rundt i et lite virtuelt kontor.
 
-## Hva gjør dette?
+## Hva er greia?
 
-Når du kjører Claude Code, visualiseres aktiviteten som:
-- 👔 **Manager** - Hovedagenten som koordinerer arbeidet
-- 💻 **Developers** - Agenter som kjører bash-kommandoer
-- 🔍 **Researchers** - Agenter som søker og leser filer
-- ✍️ **Writers** - Agenter som skriver ny kode
-- 📝 **Editors** - Agenter som redigerer eksisterende filer
+Når Claude Code kjører, dukker det opp agenter basert på hva den gjør:
+- **Manager** - Sjefen som holder styr på alt
+- **Developers** - Kjører bash-kommandoer og bygger ting
+- **Researchers** - Graver rundt i filer og søker etter info
+- **Writers** - Skriver ny kode fra scratch
+- **Editors** - Fikser og forbedrer eksisterende kode
 
-Agentene kommuniserer med hverandre, får nye skills, og leverer ferdig arbeid - alt i sanntid!
+De snakker med hverandre, plukker opp nye skills, og leverer arbeid - og du ser alt live!
 
 ---
 
-## 📋 Steg-for-steg guide
+## Steg-for-steg guide
 
 ### Steg 1: Forutsetninger
 
@@ -65,8 +65,8 @@ node bridge.js
 
 Du vil se:
 ```
-🏢 Claude Office Bridge startet på port 3001
-📡 Venter på WebSocket-tilkoblinger...
+Claude Office Bridge startet på port 3001
+Venter på WebSocket-tilkoblinger...
 ```
 
 #### Terminal 2: Start React-appen
@@ -87,7 +87,7 @@ Hvis du ikke piper Claude Code output, vil bridge.js automatisk starte demo-modu
 
 ---
 
-## 🎮 Slik bruker du det
+## Slik bruker du det
 
 ### Demo-modus (for testing)
 
@@ -108,7 +108,7 @@ claude --output-format stream-json "lag en enkel python script" 2>&1 | node ~/cl
 
 ---
 
-## 🔧 Arkitektur
+## Arkitektur
 
 ```
 ┌─────────────────┐     JSON stream      ┌──────────────────┐
@@ -144,7 +144,7 @@ Bridge.js sender disse eventene til klienten:
 
 ---
 
-## 🎨 Tilpasning
+## Tilpasning
 
 ### Endre farger
 
@@ -183,7 +183,7 @@ Rediger `client/src/App.jsx` for å:
 
 ---
 
-## 🐛 Feilsøking
+## Feilsøking
 
 ### "Frakoblet" i visualiseringen
 
@@ -205,7 +205,7 @@ claude --help | grep output-format
 
 ---
 
-## 📁 Filstruktur
+## Filstruktur
 
 ```
 claude-office-viz/
@@ -225,21 +225,12 @@ claude-office-viz/
 
 ---
 
-## 🚀 Neste steg
-
-Ideer for utvidelser:
-- [ ] Legg til lyd-effekter når agenter jobber
-- [ ] Vis en tidslinje over fullførte oppgaver
-- [ ] Legg til "kontor-møbler" som agenter kan sitte ved
-- [ ] Implementer drag-and-drop for å flytte agenter
-- [ ] Koble til flere Claude Code-instanser samtidig
-
----
-
-## 📜 Lisens
+## Lisens
 
 MIT - Bruk det som du vil!
 
 ---
+
+Følg meg for flere skråblikk på AI verden: [LinkedIn](https://www.linkedin.com/in/anders-solstad/)
 
 Laget med ❤️ og Claude
