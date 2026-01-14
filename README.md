@@ -15,6 +15,24 @@ De snakker med hverandre, plukker opp nye skills, og leverer arbeid - og du ser 
 
 ---
 
+## Hvordan fungerer det egentlig?
+
+Tenk deg at du ser på et glassbygning-kontor utenfra, hvor du kan se alle som jobber inne.
+
+Når du gir Claude en oppgave, sender den ut en strøm av meldinger om hva den gjør akkurat nå - "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode". Normalt er dette bare tekst som flyr forbi.
+
+Denne appen fanger opp disse meldingene og oversetter dem til visuelle figurer. Hver gang Claude bruker et verktøy - som å lese en fil eller kjøre en kommando - dukker det opp en ny "agent" på skjermen som representerer den oppgaven.
+
+**Flyten er:**
+1. Du gir Claude en oppgave
+2. Claude sender ut live-oppdateringer om hva den gjør
+3. En "bro" (bridge.js) fanger opp disse oppdateringene
+4. Broen sender dem videre til en nettside som tegner agentene
+
+Det er litt som å se et reality-show fra et kontor - du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
+
+---
+
 ## Steg-for-steg guide
 
 ### Steg 1: Forutsetninger
