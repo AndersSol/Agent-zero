@@ -1,67 +1,66 @@
 # Claude Office Visualizer
 
-Noen ganger lurer jeg på hva Claude egentlig driver med når den jobber. Når du gir den en oppgave, sender den ut en strøm av meldinger som "jeg leser denne filen", "jeg kjører denne kommandoen", "jeg skriver ny kode". Men det er bare tekst som flyr forbi.
+Sometimes I wonder what Claude is actually doing when it works. When you give it a task, it sends out a stream of messages like "reading this file", "running this command", "writing new code". But it's just text flying by.
 
-Så jeg lagde dette. En app som fanger opp disse meldingene og oversetter dem til noe visuelt. Tenk deg at du ser inn i et glassbygning-kontor hvor du kan se alle som jobber. Hver gang Claude bruker et verktøy, dukker det opp en ny "agent" på skjermen. Det er litt som et reality-show fra et kontor. Du ser hvem som gjør hva, hvem som snakker med hvem, og når ting blir ferdig.
+So I built this. An app that captures those messages and turns them into something visual. Imagine looking into a glass office building where you can see everyone working. Every time Claude uses a tool, a new "agent" appears on screen. It's like a reality show from an office. You see who's doing what, who's talking to whom, and when things get done.
 
-**Kort fortalt:**
-1. Du gir Claude en oppgave
-2. Claude sender ut live-oppdateringer
-3. Appen fanger dem opp og tegner agenter i et virtuelt kontor
+**In short:**
+1. You give Claude a task
+2. Claude sends out live updates
+3. The app catches them and draws agents in a virtual office
 
-## Agentene
+## The Agents
 
-- **Manager**: Sjefen som holder styr på alt
-- **Developers**: Kjører bash-kommandoer og bygger ting
-- **Researchers**: Graver rundt i filer og søker etter info
-- **Writers**: Skriver ny kode fra scratch
-- **Editors**: Fikser og forbedrer eksisterende kode
+- **Manager**: The boss keeping track of everything
+- **Developers**: Running bash commands and building stuff
+- **Researchers**: Digging through files and searching for info
+- **Writers**: Writing new code from scratch
+- **Editors**: Fixing and improving existing code
 
-De snakker med hverandre, plukker opp nye skills, og leverer arbeid. Alt i sanntid.
+They talk to each other, pick up new skills, and deliver work. All in real time.
 
 ---
 
-## Steg-for-steg guide
+## Step by Step Guide
 
-### Steg 1: Forutsetninger
+### Step 1: Prerequisites
 
-Sørg for at du har installert:
-- **Node.js** (v18 eller nyere): [nodejs.org](https://nodejs.org)
+Make sure you have installed:
+- **Node.js** (v18 or newer): [nodejs.org](https://nodejs.org)
 - **Claude Code CLI**: [docs.anthropic.com](https://docs.anthropic.com)
 
-Sjekk at alt er installert:
+Check that everything is installed:
 ```bash
-node --version    # Bør vise v18.x.x eller høyere
-claude --version  # Bør vise Claude Code versjon
+node --version    # Should show v18.x.x or higher
+claude --version  # Should show Claude Code version
 ```
 
-### Steg 2: Kopier prosjektet
+### Step 2: Copy the Project
 
-Kopier hele `claude-office-viz` mappen til ønsket lokasjon:
+Copy the entire `claude-office-viz` folder to your preferred location:
 
 ```bash
-# Eksempel: kopier til hjemmemappen din
 cp -r claude-office-viz ~/claude-office-viz
 cd ~/claude-office-viz
 ```
 
-### Steg 3: Installer avhengigheter
+### Step 3: Install Dependencies
 
-Kjør disse kommandoene:
+Run these commands:
 
 ```bash
-# Installer server-avhengigheter
+# Install server dependencies
 cd server
 npm install
 
-# Installer klient-avhengigheter
+# Install client dependencies
 cd ../client
 npm install
 ```
 
-### Steg 4: Start visualiseringen
+### Step 4: Start the Visualization
 
-Du trenger **3 terminal-vinduer**:
+You need **3 terminal windows**:
 
 #### Terminal 1: Start WebSocket Bridge
 ```bash
@@ -69,52 +68,52 @@ cd ~/claude-office-viz/server
 node bridge.js
 ```
 
-Du vil se:
+You'll see:
 ```
-Claude Office Bridge startet på port 3001
-Venter på WebSocket-tilkoblinger...
+Claude Office Bridge started on port 3001
+Waiting for WebSocket connections...
 ```
 
-#### Terminal 2: Start React-appen
+#### Terminal 2: Start the React App
 ```bash
 cd ~/claude-office-viz/client
 npm run dev
 ```
 
-Åpne nettleseren på: **http://localhost:3000**
+Open your browser at: **http://localhost:3000**
 
-#### Terminal 3: Kjør Claude Code med JSON output
+#### Terminal 3: Run Claude Code with JSON Output
 ```bash
 claude --output-format stream-json | node ~/claude-office-viz/server/bridge.js
 ```
 
-**Alternativt**, bare test med demo-modus:
-Hvis du ikke piper Claude Code output, vil bridge.js automatisk starte demo-modus etter 3 sekunder.
+**Or** just test with demo mode:
+If you don't pipe Claude Code output, bridge.js will automatically start demo mode after 3 seconds.
 
 ---
 
-## Slik bruker du det
+## How to Use It
 
-### Demo-modus (for testing)
+### Demo Mode (for testing)
 
-1. Start bare bridge.js uten å pipe noe til den
-2. Åpne visualiseringen i nettleseren
-3. Etter 3 sekunder starter demo-modus automatisk
+1. Just start bridge.js without piping anything to it
+2. Open the visualization in your browser
+3. After 3 seconds, demo mode starts automatically
 
-### Live-modus (med ekte Claude Code)
+### Live Mode (with real Claude Code)
 
-1. Start bridge og visualisering som beskrevet over
-2. I et nytt vindu, kjør Claude Code med JSON output:
+1. Start bridge and visualization as described above
+2. In a new window, run Claude Code with JSON output:
 
 ```bash
-claude --output-format stream-json "lag en enkel python script" 2>&1 | node ~/claude-office-viz/server/bridge.js
+claude --output-format stream-json "write a simple python script" 2>&1 | node ~/claude-office-viz/server/bridge.js
 ```
 
-3. Se agentene jobbe i sanntid i nettleseren!
+3. Watch the agents work in real time in your browser!
 
 ---
 
-## Arkitektur
+## Architecture
 
 ```
 ┌─────────────────┐     JSON stream      ┌──────────────────┐
@@ -129,89 +128,89 @@ claude --output-format stream-json "lag en enkel python script" 2>&1 | node ~/cl
                                          └──────────────────┘
 ```
 
-### Komponenter
+### Components
 
-| Komponent | Port | Beskrivelse |
+| Component | Port | Description |
 |-----------|------|-------------|
-| bridge.js | 3001 | WebSocket server som parser Claude Code output |
-| React App | 3000 | Visualisering av kontoret |
+| bridge.js | 3001 | WebSocket server that parses Claude Code output |
+| React App | 3000 | Office visualization |
 
-### Event-typer
+### Event Types
 
-Bridge.js sender disse eventene til klienten:
+Bridge.js sends these events to the client:
 
-| Event | Beskrivelse |
+| Event | Description |
 |-------|-------------|
-| `agent_joined` | Ny agent har kommet til kontoret |
-| `agent_updated` | Agent har endret status/oppgave |
-| `work_completed` | Agent har fullført en oppgave |
-| `communication` | Kommunikasjon mellom agenter |
-| `new_task` | Ny oppgave mottatt fra bruker |
+| `agent_joined` | New agent has joined the office |
+| `agent_updated` | Agent has changed status/task |
+| `work_completed` | Agent has completed a task |
+| `communication` | Communication between agents |
+| `new_task` | New task received from user |
 
 ---
 
-## Tilpasning
+## Customization
 
-### Endre farger
+### Change Colors
 
-I `bridge.js`, endre `AGENT_COLORS` arrayet:
+In `bridge.js`, edit the `AGENT_COLORS` array:
 
 ```javascript
 const AGENT_COLORS = [
-  '#FF6B6B',  // Rød
-  '#4ECDC4',  // Turkis
-  '#45B7D1',  // Blå
-  // Legg til flere...
+  '#FF6B6B',  // Red
+  '#4ECDC4',  // Teal
+  '#45B7D1',  // Blue
+  // Add more...
 ];
 ```
 
-### Legge til nye agent-roller
+### Add New Agent Roles
 
-I `bridge.js`, utvid `getAgentRole()` funksjonen:
+In `bridge.js`, extend the `getAgentRole()` function:
 
 ```javascript
 function getAgentRole(toolName) {
   const roles = {
     'bash': 'developer',
-    'MyCustomTool': 'specialist',  // Legg til ny
+    'MyCustomTool': 'specialist',  // Add new
     // ...
   };
   return roles[toolName] || 'worker';
 }
 ```
 
-### Endre visualiseringen
+### Modify the Visualization
 
-Rediger `client/src/App.jsx` for å:
-- Endre layout og posisjonering
-- Legge til nye animasjoner
-- Endre agent-avatarer og ikoner
+Edit `client/src/App.jsx` to:
+- Change layout and positioning
+- Add new animations
+- Change agent avatars and icons
 
 ---
 
-## Feilsøking
+## Troubleshooting
 
-### "Frakoblet" i visualiseringen
+### "Disconnected" in the Visualization
 
-1. Sjekk at bridge.js kjører
-2. Sjekk at port 3001 ikke er blokkert av brannmur
-3. Prøv å refreshe nettleseren
+1. Check that bridge.js is running
+2. Check that port 3001 isn't blocked by firewall
+3. Try refreshing the browser
 
-### Ingen agenter vises
+### No Agents Showing
 
-1. Vent 3 sekunder for demo-modus
-2. Eller kjør Claude Code med `--output-format stream-json`
+1. Wait 3 seconds for demo mode
+2. Or run Claude Code with `--output-format stream-json`
 
-### Claude Code gir feilmelding
+### Claude Code Gives Error
 
-Sørg for at du har riktig versjon av Claude Code:
+Make sure you have the right version of Claude Code:
 ```bash
 claude --help | grep output-format
 ```
 
 ---
 
-## Filstruktur
+## File Structure
 
 ```
 claude-office-viz/
@@ -224,19 +223,19 @@ claude-office-viz/
 │   ├── index.html
 │   └── src/
 │       ├── main.jsx
-│       └── App.jsx         # React visualisering
+│       └── App.jsx         # React visualization
 ├── start.sh                # Convenience script
 └── README.md
 ```
 
 ---
 
-## Lisens
+## License
 
-MIT. Bruk det som du vil!
+MIT. Do whatever you want with it!
 
 ---
 
-Følg meg for flere skråblikk på AI verden: [LinkedIn](https://www.linkedin.com/in/anders-solstad/)
+Follow me for more sideways looks at the AI world: [LinkedIn](https://www.linkedin.com/in/anders-solstad/)
 
-Laget med ❤️ og Claude
+Made with ❤️ and Claude
