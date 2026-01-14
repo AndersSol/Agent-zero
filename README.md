@@ -2,8 +2,6 @@
 
 En real-time visualisering av Claude Code som et team av agenter som jobber sammen i et kontor.
 
-![Claude Office Demo](https://via.placeholder.com/800x400/0a0a0f/4ECDC4?text=Claude+Office+Visualization)
-
 ## Hva gjør dette?
 
 Når du kjører Claude Code, visualiseres aktiviteten som:
